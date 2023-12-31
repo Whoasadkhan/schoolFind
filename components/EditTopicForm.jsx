@@ -1,58 +1,95 @@
-"use client";
+// "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useState } from "react";
+// import { useRouter } from "next/navigation";
 
-export default function EditTopicForm({ id, title, description }) {
-  const [newTitle, setNewTitle] = useState(title);
-  const [newDescription, setNewDescription] = useState(description);
+// export default function EditTopicForm({ id,  name, address, board, city, image }) {
 
-  const router = useRouter();
+//   const [newName, setNewName] = useState(name);
+//   const [newAddress, setNewAddress] = useState(address);
+//   const [newBoard, setNewBoard] = useState(board);
+//   const [newCity, setNewCity] = useState(city);
+//   const [newImage, setNewImage] = useState(image);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+//   const router = useRouter();
 
-    try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ newTitle, newDescription }),
-      });
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
 
-      if (!res.ok) {
-        throw new Error("Failed to update topic");
-      }
+//     try {
+//       const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+//         method: "PUT",
+//         headers: {
+//           "Content-type": "application/json",
+//         },
+//         body: JSON.stringify({
+        
+//           newName,
+//           newAddress,
+//           newBoard,
+//           newCity,
+//           newImage,
+//         }),
+//       });
 
-      router.refresh();
-      router.push("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+//       if (!res.ok) {
+//         throw new Error("Failed to update topic");
+//       }
 
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <input
-        onChange={(e) => setNewTitle(e.target.value)}
-        value={newTitle}
-        className="border border-slate-500 px-8 py-2"
-        type="text"
-        placeholder="Topic Title"
-      />
+//       router.refresh();
+//       router.push("/");
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
-      <input
-        onChange={(e) => setNewDescription(e.target.value)}
-        value={newDescription}
-        className="border border-slate-500 px-8 py-2"
-        type="text"
-        placeholder="Topic Description"
-      />
+//   return (
+//     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      
 
-      <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
-        Update Topic
-      </button>
-    </form>
-  );
-}
+//       <input
+//         onChange={(e) => setNewName(e.target.value)}
+//         value={newName}
+//         className="border border-slate-500 px-8 py-2"
+//         type="text"
+//         placeholder="Name"
+//       />
+
+//       <input
+//         onChange={(e) => setNewAddress(e.target.value)}
+//         value={newAddress}
+//         className="border border-slate-500 px-8 py-2"
+//         type="text"
+//         placeholder="Address"
+//       />
+
+//       <input
+//         onChange={(e) => setNewBoard(e.target.value)}
+//         value={newBoard}
+//         className="border border-slate-500 px-8 py-2"
+//         type="text"
+//         placeholder="Board"
+//       />
+
+//       <input
+//         onChange={(e) => setNewCity(e.target.value)}
+//         value={newCity}
+//         className="border border-slate-500 px-8 py-2"
+//         type="text"
+//         placeholder="City"
+//       />
+
+//       <input
+//         onChange={(e) => setNewImage(e.target.value)}
+//         value={newImage}
+//         className="border border-slate-500 px-8 py-2"
+//         type="text"
+//         placeholder="Image URL"
+//       />
+
+//       <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
+//         Update Topic
+//       </button>
+//     </form>
+//   );
+// }

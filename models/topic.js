@@ -1,9 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 
-const topicSchema = new Schema(
+const  topicSchema = new Schema(
   {
-    title: String,
-    description: String,
+   
+    name: String,
+    address: String,
+    board: String,
+    city: String,
+    image: String,
   },
   {
     timestamps: true,

@@ -2,11 +2,24 @@ import connectMongoDB from "@/libs/mongodb";
 import Topic from "@/models/topic";
 import { NextResponse } from "next/server";
 
+
+
+
 export async function POST(request) {
-  const { title, description } = await request.json();
-  await connectMongoDB();
-  await Topic.create({ title, description });
-  return NextResponse.json({ message: "Topic Created" }, { status: 201 });
+  try {
+    // Destructuring properties from the JSON request body
+    const {name,address,board, city, image } = await request.json();
+    
+    console.log("hello");
+
+    await connectMongoDB();
+    await Topic.create({ name, address, board, city, image });
+
+    return NextResponse.json({ message: "Topic Created" }, { status: 201 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
 export async function GET() {
